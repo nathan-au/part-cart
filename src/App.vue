@@ -1,7 +1,7 @@
 <script setup>
 	import Welcome from './pages/Welcome.vue';
     
-    import Next from './pages/Next.vue'
+    import Dashboard from './pages/Dashboard.vue'
 
     import { ref } from 'vue';
     import { onMounted } from 'vue';
@@ -21,6 +21,6 @@
 </script>
 
 <template>
-    <Next v-if="session" :session="session"/>
+    <Dashboard v-if="session" :session="session"/>
     <Welcome v-else/>
 </template>
