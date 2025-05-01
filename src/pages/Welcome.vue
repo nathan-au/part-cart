@@ -4,13 +4,13 @@
             Welcome to PartCart
         </h1>
         <div class="flex flex-row gap-4">
-            <Login/>
+            <Signin/>
             <Signup/>
         </div>
     </div>
 </template>
 
 <script setup>
-    import Login from '../components/Login.vue';
+    import Signin from '../components/Signin.vue';
     import Signup from '../components/Signup.vue';
 </script>
