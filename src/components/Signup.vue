@@ -4,8 +4,8 @@
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your last name" v-model="last_name"/>       
         <select class="border-2 p-2 rounded-lg" v-model="user_type">
             <option selected disabled value>-- Select an option --</option>
-            <option value="technician">Technician</option>
-            <option value="buyer">Buyer</option>
+            <option value="Technician">Technician</option>
+            <option value="Buyer">Buyer</option>
         </select>
         <input class="border-2 p-2 rounded-lg" type="email" placeholder="Enter your email" v-model="email"/>            
         
