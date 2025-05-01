@@ -1,16 +1,23 @@
 <template>
-    <form class="border-4 p-4 rounded-lg flex flex-col gap-2" @submit.prevent>
-        <input class="border-2 p-2 rounded-lg" type="text" placeholder="Part Name *" v-model="name"/>            
+    <form class="border-4 p-4 rounded-lg flex flex-col gap-2" @submit.prevent="submitOrder">
+        <input class="border-2 p-2 rounded-lg" type="text" placeholder="Part Name" v-model="name"/>            
         <textarea class="border-2 p-2 rounded-lg resize-none" rows="3" placeholder="Description" v-model="description"></textarea>
-        <input class="border-2 p-2 rounded-lg" type="number" placeholder="Quantity *" v-model="quantity"/>            
-        <input class="border-2 p-2 rounded-lg" type="url" placeholder="URL *" v-model="url"/>    
+        <input class="border-2 p-2 rounded-lg" type="text" placeholder="Quantity" v-model="quantity"/>            
+        <input class="border-2 p-2 rounded-lg" type="text" placeholder="URL" v-model="url"/>    
         <select class="border-2 p-2 rounded-lg" v-model="priority">
-            <option selected disabled value>-- Select an option -- *</option>
+            <option selected disabled value>-- Select an option --</option>
             <option value="high">High Priority</option>
             <option value="medium">Medium Priority</option>
             <option value="low">Low Priority</option>
         </select>
-        <button class="border-2 p-2 rounded-lg hover:bg-gray-300 cursor-pointer" @click="submitOrder">Submit Order</button>
+        <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
+            <span v-if="!loading">Submit order</span>    
+            <span v-if="loading">Submitting order...</span>
+        </button>
+        <br v-if="error_message">
+        <span v-if="error_message" class="text-red-700">{{ error_message }}</span>
+        <br v-if="success_message">
+        <span v-if="success_message" class="text-green-700">{{ success_message }}</span>
     </form>
 </template>
 
@@ -19,22 +26,27 @@
     import { supabase } from '../supabase.js'
 
     const loading = ref(false)
+    const error_message = ref('')
+    const success_message = ref('')
 
-    const name = ref('');
+    const name = ref('')
     const description = ref('')
     const quantity = ref('')
     const url = ref('')
     const priority = ref('')
 
     const submitOrder = async () => {
-        if (
-            !name.value.trim() ||
-            !quantity.value ||
-            !url.value.trim() ||
-            !priority.value.trim()
-        ) {
-            alert('Please fill out required fields (*).')
-            return;
+        if (!name.value.trim() || !description.value.trim() || !quantity.value || !url.value.trim() || !priority.value.trim()) {
+            error_message.value = 'Please fill out all fields.'
+            return
+        }
+        else if (!/^\d+$/.test(quantity.value.trim())) {
+            error_message.value = 'Please enter a valid quantity.'
+            return
+        }
+        else if (!/^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/.test(url.value.trim())) {
+            error_message.value = 'Please enter a valid URL.'
+            return
         }
         try {
             loading.value = true
@@ -45,23 +57,27 @@
                 url: url.value, 
                 priority: priority.value
             })
-            if (error) throw error
-            
+            if (error) {
+                throw error
+            }
+            error_message.value = ''
+            success_message.value = 'Order submitted successfully.'
+
             name.value = ''
             description.value = ''
             quantity.value = ''
             url.value = ''
-            priority.value = ''
-            
-            alert('Order successful');
+            priority.value = ''            
         }
         catch (error) {
             if (error instanceof Error) {
-                alert(error.message)
+                error_message.value = error.message + '.'
+            }
+            else {
+                error_message.value = 'An unexpected error occurred.' 
             }
         }
         finally {
-            
             loading.value = false
         }
     }

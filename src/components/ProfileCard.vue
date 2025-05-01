@@ -1,21 +1,21 @@
 <template>
     <div class="border-4 p-4 rounded-lg flex flex-col gap-2">
         <div class="border-2 p-2 rounded-lg text-3xl">
-            {{ user_first_name }}
-            {{ user_last_name }}
+            <span>{{ user_first_name }}</span>
+            <span>{{ user_last_name }}</span>
         </div>
         <div class="border-2 p-2 rounded-lg">
-            {{ user_email }}
+            <span>{{ user_email }}</span>
             <br>
-            {{ user_user_type }}
+            <span>{{ user_user_type }}</span>
         </div>
     </div>        
 </template>
 
 <script setup>
-    import { supabase } from '@/supabase'
-    import { onMounted } from 'vue'
     import { ref } from 'vue'
+    import { onMounted } from 'vue'
+    import { supabase } from '@/supabase'
 
     const user_first_name = ref('')
     const user_last_name = ref('')
