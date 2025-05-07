@@ -1,5 +1,5 @@
 <template>
-    <form class="border-4 p-4 rounded-lg flex flex-col gap-2" @submit.prevent="submitOrder">
+    <form class="flex flex-col gap-2" @submit.prevent="submitOrder">
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Part Name" v-model="name"/>            
         <textarea class="border-2 p-2 rounded-lg resize-none" rows="3" placeholder="Description" v-model="description"></textarea>
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Quantity" v-model="quantity"/>            
@@ -14,10 +14,11 @@
             <span v-if="!loading">Submit order</span>    
             <span v-if="loading">Submitting order...</span>
         </button>
+        
         <br v-if="error_message">
         <span v-if="error_message" class="text-red-700">{{ error_message }}</span>
-        <br v-if="success_message">
-        <span v-if="success_message" class="text-green-700">{{ success_message }}</span>
+        <br v-if="success_message && !error_message">
+        <span v-if="success_message && !error_message" class="text-green-700">{{ success_message }}</span>
     </form>
 </template>
 

@@ -1,14 +1,10 @@
 <template>
-    <div class="border-4 p-4 rounded-lg flex flex-col gap-2">
-        <div class="border-2 p-2 rounded-lg text-3xl">
-            <span>{{ user_first_name }}</span>
-            <span>{{ user_last_name }}</span>
-        </div>
-        <div class="border-2 p-2 rounded-lg">
-            <span>{{ user_email }}</span>
-            <br>
-            <span>{{ user_user_type }}</span>
-        </div>
+    <div class="border-2 p-4 rounded-lg flex flex-col gap-2 text-xl text-center">
+        <span class="text-3xl">{{ user_first_name + ' ' + user_last_name }}</span>
+        <br>
+        <span>{{ user_email }}</span>
+        <br>
+        <span>{{ user_user_type }}</span>
     </div>        
 </template>
 

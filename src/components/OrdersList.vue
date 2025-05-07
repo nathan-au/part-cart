@@ -1,6 +1,5 @@
 <template>
     <pre>{{ orders }}</pre>
-
 </template>
 
 <script setup>
