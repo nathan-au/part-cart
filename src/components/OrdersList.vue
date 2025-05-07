@@ -1,5 +1,6 @@
 <template>
-    <pre>{{ orders }}</pre>
+    <pre v-if="orders.length != 0">{{ orders }}</pre>
+    <h1 v-if="orders.length == 0">No orders to display</h1>
 </template>
 
 <script setup>
@@ -9,8 +10,16 @@
 
     const orders = ref([])
 
+    
+
     const fetchOrders = async() => {
-        const { data, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false })
+        const { data: { user }, error: userError } = await supabase.auth.getUser()
+        if (userError || !user) {
+            alert(userError)
+            return
+        }
+
+        const { data, error } = await supabase.from('orders').select('*').eq('created_by', user.email).order('created_at', { ascending: false })
         if (error) {
             alert(error.message)
             return

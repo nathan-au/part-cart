@@ -19,10 +19,8 @@
     const user_user_type = ref('')
 
     const getProfile = async () => {
-        const {
-            data: { user },
-            error: userError
-        } = await supabase.auth.getUser()
+
+        const { data: { user }, error: userError } = await supabase.auth.getUser()
         if (userError || !user) {
             alert(userError)
             return

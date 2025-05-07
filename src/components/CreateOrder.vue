@@ -6,9 +6,9 @@
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="URL" v-model="url"/>    
         <select class="border-2 p-2 rounded-lg" v-model="priority">
             <option selected disabled value>-- Select an option --</option>
-            <option value="high">High Priority</option>
-            <option value="medium">Medium Priority</option>
-            <option value="low">Low Priority</option>
+            <option value="High">High Priority</option>
+            <option value="Medium">Medium Priority</option>
+            <option value="Low">Low Priority</option>
         </select>
         <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
             <span v-if="!loading">Submit order</span>    
@@ -50,13 +50,25 @@
             return
         }
         try {
+
+            const { data: { user }, error: userError } = await supabase.auth.getUser()
+            if (userError || !user) {
+                alert(userError)
+                return
+            }
+
+            console.log(user.email)
+
+
             loading.value = true
             const { error } = await supabase.from('orders').insert({ 
                 name: name.value, 
                 description: description.value, 
                 quantity: quantity.value, 
                 url: url.value, 
-                priority: priority.value
+                priority: priority.value,
+                created_by: user.email,
+                status: 'Submitted'
             })
             if (error) {
                 throw error
