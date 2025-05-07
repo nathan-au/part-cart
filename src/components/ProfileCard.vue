@@ -22,27 +22,27 @@
         const {
             data: { user },
             error: userError
-        } = await supabase.auth.getUser();
+        } = await supabase.auth.getUser()
         if (userError || !user) {
             alert(userError)
-            return;
+            return
         }
 
-        const { data, error } = await supabase.from('profiles').select('*').eq('id', user.id).single();
+        const { data, error } = await supabase.from('profiles').select('*').eq('id', user.id).single()
         if (error) {
-            alert(error.message);
-            return;
+            alert(error.message)
+            return
         }
 
         user_first_name.value = data.first_name
         user_last_name.value = data.last_name
         user_email.value = data.email
         user_user_type.value = data.user_type
-        return data;
+        return data
     }
 
     onMounted(() => {
-        getProfile();
-    });
+        getProfile()
+    })
 
 </script>

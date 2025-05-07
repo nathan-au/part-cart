@@ -34,16 +34,16 @@
         const {
             data: { user },
             error: userError
-        } = await supabase.auth.getUser();
+        } = await supabase.auth.getUser()
         if (userError || !user) {
             alert(userError)
-            return;
+            return
         }
 
-        const { data, error } = await supabase.from('orders').select('*').eq('name', 'Minion').single();
+        const { data, error } = await supabase.from('orders').select('*').eq('name', 'Minion').single()
         if (error) {
-            alert(error.message);
-            return;
+            alert(error.message)
+            return
         }
 
         order_created_at.value = data.created_at
@@ -53,11 +53,11 @@
         order_url.value = data.url
         order_priority.value = data.priority
 
-        return data;
+        return data
     }
 
     onMounted(() => {
-        getProfile();
-    });
+        getProfile()
+    })
 
 </script>
