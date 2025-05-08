@@ -10,15 +10,15 @@
 
     const orders = ref([])
 
-    
-
     const fetchOrders = async() => {
+        // get current user email
         const { data: { user }, error: userError } = await supabase.auth.getUser()
         if (userError || !user) {
             alert(userError)
             return
         }
 
+        // get list of orders created by current user
         const { data, error } = await supabase.from('orders').select('*').eq('created_by', user.email).order('created_at', { ascending: false })
         if (error) {
             alert(error.message)
@@ -31,9 +31,10 @@
     // get live database updates
     let channel
 
-    onMounted(() => {
-        fetchOrders()
+    onMounted(() => { // onMounted runs on page load
+        fetchOrders() // first fetch orders list
 
+        // subscribe to orders-channel to any postgres change events to the orders table and fetch orders again if yes
         channel = supabase
             .channel('orders-channel')
             .on(
