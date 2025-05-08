@@ -1,9 +1,9 @@
 <template>
-    <div class="h-screen bg-emerald-50 overflow-hidden">
+    <div class="h-screen overflow-hidden" style="background-color: #efefef">
         <!-- top bar -->
-        <div class="border-b-4 pl-4 pr-4 pt-2 pb-2 flex flex-row mb-8 items-center">
+        <div class="border-b-4 pl-4 pr-4 pt-2 pb-2 flex flex-row mb-8 items-center bg-white">
             <!-- @click calls the function on button click -->
-            <button class="border-2 p-2 rounded-lg hover:bg-amber-500 cursor-pointer bg-amber-400" @click="toggleMenu">
+            <button class="border-2 p-2 rounded-lg hover:bg-amber-500 cursor-pointer bg-green" @click="toggleMenu">
                 Menu
             </button>
             <h1 class="absolute left-1/2 transform -translate-x-1/2 text-4xl">
@@ -17,7 +17,7 @@
         <!-- screen content -->
         <div class="grid grid-cols-6 gap-4 pr-4">
             <!-- left side menu -->
-            <div v-if="show_menu" class="col-span-1 border-r-4 border-t-4 border-b-4 rounded-tr-lg rounded-br-lg p-4 flex flex-col gap-2 bg-amber-400">
+            <div v-if="show_menu" class="col-span-1 rounded-tr-lg rounded-br-lg p-4 flex flex-col gap-2 text-white" style="background-color: #020202">
                 <ProfileCard/>
                 <SignOut/>
             </div>
