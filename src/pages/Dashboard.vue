@@ -37,7 +37,7 @@
             }">
                 <div class="h-[80vh] p-4 rounded-lg bg-neutral-50 text-green-900 overflow-hidden flex flex-col">
                     <h1 class="text-6xl text-center mb-4">My Orders</h1>
-                    <div class="bg-neutral-200 rounded-lg p-2 overflow-y-auto">
+                    <div class="bg-neutral-200 rounded-lg p-4 overflow-y-auto">
                         <OrdersList/>
 
                     </div>

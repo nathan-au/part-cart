@@ -10,7 +10,7 @@
             <option value="Medium">Medium Priority</option>
             <option value="Low">Low Priority</option>
         </select>
-        <button class="p-2 rounded-lg bg-green-900 hover:bg-green-950 cursor-pointer">
+        <button class="p-2 rounded-lg bg-green-900 hover:bg-green-950 cursor-pointer mt-4">
             <span v-if="!loading">Submit order</span>    
             <span v-if="loading">Submitting order...</span>
         </button>

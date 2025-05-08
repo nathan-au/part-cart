@@ -1,7 +1,45 @@
 <template>
     
-    <pre v-if="orders.length != 0">{{ orders }}</pre>
-    <h1 v-if="orders.length == 0">No orders to display</h1>
+    <!-- <pre v-if="orders.length > 0">{{ orders }}</pre> -->
+
+    <div v-if="orders.length > 0" class="grid grid-cols-2 gap-2">
+        <div v-for="order in orders" :key="order.id" class="border-2 rounded-lg p-2 bg-white">
+
+            <div class="text-xl">
+                <span class="font-bold">Order ID: </span>
+                <span>{{ order.id }}</span>
+            </div>
+            
+
+            <span class="font-bold">Part name: </span>
+            <span>{{ order.name }}</span>
+
+            <br>
+            <div class="flex flex-row gap-2">
+                <div v-if="order.priority == 'Low'" class="border-2 bg-green-500 p-1 rounded-lg inline">
+                    {{ order.priority }} Priority
+                </div>
+                <div v-if="order.priority == 'Medium'" class="border-2 bg-yellow-500 p-1 rounded-lg inline">
+                    {{ order.priority }} Priority
+                </div>
+                <div v-if="order.priority == 'High'" class="border-2 bg-red-500 p-1 rounded-lg inline">
+                    {{ order.priority }} Priority
+                </div>
+
+
+                <div v-if="order.status == 'Submitted'" class="border-2 bg-yellow-500 p-1 rounded-lg inline">
+                    {{ order.status }}
+                </div>
+            </div>
+
+            
+
+            <span>{{ new Date(order.created_at).toLocaleString() }}</span>
+
+        </div>
+    </div>
+
+    <div v-if="orders.length == 0">No orders to display</div>
 </template>
 
 <script setup>
