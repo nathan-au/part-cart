@@ -10,15 +10,15 @@
             <option value="Medium">Medium Priority</option>
             <option value="Low">Low Priority</option>
         </select>
-        <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
+        <button class="p-2 rounded-lg bg-green-900 hover:bg-green-950 cursor-pointer">
             <span v-if="!loading">Submit order</span>    
             <span v-if="loading">Submitting order...</span>
         </button>
         
         <br v-if="error_message">
-        <span v-if="error_message" class="text-red-700">{{ error_message }}</span>
+        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
         <br v-if="success_message && !error_message">
-        <span v-if="success_message && !error_message" class="text-green-700">{{ success_message }}</span>
+        <span v-if="success_message && !error_message" class="text-neutral-900">{{ success_message }}</span>
     </form>
 </template>
 

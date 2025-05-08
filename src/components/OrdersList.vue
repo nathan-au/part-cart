@@ -1,4 +1,5 @@
 <template>
+    
     <pre v-if="orders.length != 0">{{ orders }}</pre>
     <h1 v-if="orders.length == 0">No orders to display</h1>
 </template>

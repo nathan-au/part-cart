@@ -15,7 +15,7 @@
             <span v-if="loading">Signing up...</span>
         </button>
         <br v-if="error_message">
-        <span v-if="error_message" class="text-red-700">{{ error_message }}</span> 
+        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
     </form>
 </template>
 

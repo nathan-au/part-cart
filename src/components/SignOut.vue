@@ -1,10 +1,10 @@
 <template>
-    <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer" @click="signOut">
+    <button class="p-2 rounded-lg hover:bg-green-950 bg-green-900 cursor-pointer truncate" @click="signOut">
         <span v-if="!loading">Sign out</span>
         <span v-if="loading">Signing out...</span>
     </button>
     <br v-if="error_message">
-    <span v-if="error_message" class="text-red-700">{{ error_message }}</span> 
+    <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
 </template>
 
 <script setup>
