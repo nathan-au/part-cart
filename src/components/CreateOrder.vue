@@ -15,9 +15,7 @@
             <span v-if="loading">Submitting order...</span>
         </button>
         
-        <br v-if="error_message">
-        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
-        <br v-if="success_message && !error_message">
+        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1 text-xs font-normal">{{ error_message }}</span>
         <span v-if="success_message && !error_message" class="text-neutral-900">{{ success_message }}</span>
     </form>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen overflow-hidden text-neutral-900 bg-neutral-200 font-sans font-medium font-stretch-semi-condensed tracking-wider">
         <!-- top bar -->
-        <div class="border-b-4 border-neutral-900 pl-4 pr-4 pt-2 pb-2 flex flex-row mb-8 items-center bg-neutral-50">
+        <div class="border-b-4 border-neutral-900 pl-4 pr-4 pt-2 pb-2 flex flex-row items-center bg-neutral-50">
             <!-- @click calls the function on button click -->
             <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="toggleMenu" >
                 Menu
@@ -15,12 +15,17 @@
         </div>
         
         <!-- screen content -->
-        <div class="grid grid-cols-6 gap-4 pr-4">
+        <div class="grid grid-cols-6 gap-4 pr-4 mt-4">
 
             <!-- left side menu -->
-            <div v-if="show_menu" class="col-span-1 rounded-tr-lg rounded-br-lg p-4 flex flex-col gap-2 text-neutral-50 bg-neutral-900">
-                <ProfileCard/>
-                <SignOut/>
+            <div v-if="show_menu" class="col-span-1 rounded-tr-lg rounded-br-lg p-4 flex flex-col gap-2 text-neutral-50 bg-neutral-900 text-center">
+                <span>
+                    <ProfileCard/>
+                </span>
+                <span class="mt-auto">
+                    <SignOut/>
+
+                </span>
             </div>
             
             <!-- center orders list -->

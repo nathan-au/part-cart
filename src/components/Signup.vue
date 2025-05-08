@@ -1,7 +1,10 @@
 <template>
     <form class="border-4 p-4 rounded-lg flex flex-col gap-2" @submit.prevent="signUp">
-        <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your first name" v-model="first_name"/>            
-        <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your last name" v-model="last_name"/>       
+        <div class="flex flex-row gap-2">
+            <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your first name" v-model="first_name"/>            
+            <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your last name" v-model="last_name"/>       
+
+        </div>
         <select class="border-2 p-2 rounded-lg" v-model="user_type">
             <!-- display prompt option by default -->
             <option selected disabled value>-- Select an option --</option> 
@@ -10,12 +13,11 @@
         </select>
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your email" v-model="email"/>            
         <input class="border-2 p-2 rounded-lg" type="password" placeholder="Enter your password" v-model="password"/>
-        <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
+        <button class="border-2 p-2 rounded-lg hover:bg-green-950 bg-green-900 text-white cursor-pointer mt-4">
             <span v-if="!loading">Sign up</span> 
             <span v-if="loading">Signing up...</span>
         </button>
-        <br v-if="error_message">
-        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
+        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1 text-xs font-normal">{{ error_message }}</span>
     </form>
 </template>
 

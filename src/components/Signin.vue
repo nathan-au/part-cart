@@ -5,13 +5,12 @@
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your email" v-model="email"/>         
         <input class="border-2 p-2 rounded-lg" type="password" placeholder="Enter your password" v-model="password"/>
         <!-- different button text will be displayed depending on loading status -->
-        <button class="border-2 p-2 rounded-lg hover:bg-gray-200 cursor-pointer">
+        <button class="border-2 p-2 rounded-lg hover:bg-green-950 bg-green-900 text-white cursor-pointer mt-4">
             <span v-if="!loading">Sign in</span> 
             <span v-if="loading">Signing in...</span>
         </button>
         <!-- display red error message -->
-        <br v-if="error_message">
-        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
+        <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1 text-xs font-normal">{{ error_message }}</span>
     </form>
 </template>
 

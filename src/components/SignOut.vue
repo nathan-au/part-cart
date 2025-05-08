@@ -4,7 +4,7 @@
         <span v-if="loading">Signing out...</span>
     </button>
     <br v-if="error_message">
-    <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1">{{ error_message }}</span>
+    <span v-if="error_message" class="text-neutral-900 bg-red-600 rounded-xs p-1 text-xs font-normal">{{ error_message }}</span>
 </template>
 
 <script setup>
