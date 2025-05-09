@@ -1,12 +1,16 @@
 <template>
+
     <!-- if user is authenticated display dashboard, else display welcome -->
-    <Dashboard v-if="session"/> 
+    <Technician v-if="session && session.user && session.user.user_metadata && session.user.user_metadata.user_type"/>
     <Welcome v-else/>
+
+
 </template>
 
 <script setup>
 	import Welcome from './pages/Welcome.vue'
-    import Dashboard from './pages/Dashboard.vue'
+    import Technician from './pages/Technician.vue'
+    import Buyer from './pages/Buyer.vue'
 
     import { ref } from 'vue'
     import { onMounted } from 'vue'

@@ -13,7 +13,7 @@
         </select>
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="Enter your email" v-model="email"/>            
         <input class="border-2 p-2 rounded-lg" type="password" placeholder="Enter your password" v-model="password"/>
-        <button class="border-2 p-2 rounded-lg hover:bg-green-950 bg-green-900 text-white cursor-pointer mt-4">
+        <button class="p-2 rounded-lg hover:bg-green-950 bg-green-900 text-white cursor-pointer mt-4">
             <span v-if="!loading">Sign up</span> 
             <span v-if="loading">Signing up...</span>
         </button>
