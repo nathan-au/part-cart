@@ -10,6 +10,9 @@
         <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('oldest')" >
             Oldest
         </button>
+        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('urgent')" >
+            Urgent
+        </button>
     </div>
     <div class="bg-neutral-200 rounded-lg p-4 overflow-y-auto mt-2">
         <div v-if="orders.length > 0 && !loading" class="grid grid-cols-2 gap-2">
@@ -30,14 +33,14 @@
                 </div>
 
                 <div class="flex flex-row gap-2 mt-1 mb-1">
-                    <div v-if="order.priority == 'Low'" class="border-1 bg-green-400 p-1 pl-2 pr-2 rounded-full inline">
-                        {{ order.priority }} Priority
+                    <div v-if="order.priority == '3'" class="border-1 bg-green-400 p-1 pl-2 pr-2 rounded-full inline">
+                        Low Priority
                     </div>
-                    <div v-if="order.priority == 'Medium'" class="border-1 bg-yellow-400 p-1 pl-2 pr-2 rounded-full inline">
-                        {{ order.priority }} Priority
+                    <div v-if="order.priority == '2'" class="border-1 bg-yellow-400 p-1 pl-2 pr-2 rounded-full inline">
+                        Medium Priority
                     </div>
-                    <div v-if="order.priority == 'High'" class="border-1 bg-red-400 p-1 pl-2 pr-2 rounded-full inline">
-                        {{ order.priority }} Priority
+                    <div v-if="order.priority == '1'" class="border-1 bg-red-400 p-1 pl-2 pr-2 rounded-full inline">
+                        High Priority
                     </div>
 
                     <div v-if="order.status == 'Submitted'" class="border-1 bg-blue-300 p-1 pl-2 pr-2 rounded-full inline">
@@ -85,6 +88,8 @@
             case 'a-z':
                 query = query.order('name', {ascending: true})
                 break
+            case 'urgent':
+                query = query.order('priority', {ascending: true})
             default:
                 query = query.order('created_at', {ascending: false})
         }

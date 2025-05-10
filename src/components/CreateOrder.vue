@@ -6,9 +6,9 @@
         <input class="border-2 p-2 rounded-lg" type="text" placeholder="URL" v-model="url"/>    
         <select class="border-2 p-2 rounded-lg" v-model="priority">
             <option selected disabled value>-- Select an option --</option>
-            <option value="High">High Priority</option>
-            <option value="Medium">Medium Priority</option>
-            <option value="Low">Low Priority</option>
+            <option value="1">High Priority</option>
+            <option value="2">Medium Priority</option>
+            <option value="3">Low Priority</option>
         </select>
         <button class="p-2 rounded-lg bg-green-900 hover:bg-green-950 cursor-pointer mt-4">
             <span v-if="!loading">Submit order</span>    

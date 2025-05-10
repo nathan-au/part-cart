@@ -11,14 +11,14 @@
                 <span>{{ selected_order_details.name }}</span>
             </div>
             <div class="flex flex-row gap-2 mt-1 mb-1">
-                <div v-if="selected_order_details.priority == 'Low'" class="border-1 bg-green-400 p-1 pl-2 pr-2 rounded-full inline">
-                    {{ selected_order_details.priority }} Priority
+                <div v-if="selected_order_details.priority == '3'" class="border-1 bg-green-400 p-1 pl-2 pr-2 rounded-full inline">
+                    Low Priority
                 </div>
-                <div v-if="selected_order_details.priority == 'Medium'" class="border-1 bg-yellow-400 p-1 pl-2 pr-2 rounded-full inline">
-                    {{ selected_order_details.priority }} Priority
+                <div v-if="selected_order_details.priority == '2'" class="border-1 bg-yellow-400 p-1 pl-2 pr-2 rounded-full inline">
+                    Medium Priority
                 </div>
-                <div v-if="selected_order_details.priority == 'High'" class="border-1 bg-red-400 p-1 pl-2 pr-2 rounded-full inline">
-                    {{ selected_order_details.priority }} Priority
+                <div v-if="selected_order_details.priority == '1'" class="border-1 bg-red-400 p-1 pl-2 pr-2 rounded-full inline">
+                    High Priority
                 </div>
 
                 <div v-if="selected_order_details.status == 'Submitted'" class="border-1 bg-blue-300 p-1 pl-2 pr-2 rounded-full inline">
