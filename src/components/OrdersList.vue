@@ -1,13 +1,13 @@
 <template>
     <div class="flex flex-row gap-2 justify-end items-center">
         <div class="mr-2">Sort by:</div>
-        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('a-z')" >
+        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="list_sort = 'a-z'; fetchOrders(list_sort, list_filter)" >
             A-Z
         </button>
-        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('latest')" >
+        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="list_sort = 'latest'; fetchOrders(list_sort, list_filter)" >
             Latest
         </button>
-        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('oldest')" >
+        <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="list_sort = 'oldest'; fetchOrders(list_sort, list_filter)" >
             Oldest
         </button>
         <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="fetchOrders('urgent')" >
@@ -72,8 +72,13 @@
     const orders = ref([])
     const loading = ref(false)
 
+    let list_sort = 'latest'
+    let list_filter = 'none'
 
-    const fetchOrders = async(sort) => {
+    
+
+
+    const fetchOrders = async(sort, filter) => {
         loading.value = true
         // get current user email
         const { data: { user }, error: userError } = await supabase.auth.getUser()
@@ -82,7 +87,18 @@
             return
         }
 
-        let query = supabase.from('orders').select('*').eq('created_by', user.email)
+        let query = supabase.from('orders').select('*')
+
+        console.log(user.user_metadata.user_type)
+        
+        switch(user.user_metadata.user_type) {
+            case 'Buyer':
+                query = query.eq('status', 'Pending')
+                break
+            case 'Technician':
+                query = query.eq('created_by', user.email)
+                break
+        }
 
         switch(sort) {
             case 'latest':

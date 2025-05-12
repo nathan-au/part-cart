@@ -52,8 +52,8 @@
                 <span>{{ selected_order_details.created_by }}</span>
             </div>
             
-            <div class="flex flex-row gap-4 mt-4 justify-between">
-                <button class="p-2 rounded-lg cursor-pointer bg-red-900 text-neutral-50 hover:bg-red-950" @click="deleteOrder" >
+            <div class="flex flex-row gap-4 mt-4 justify-end">
+                <button v-if="selected_order_details.status == 'Pending'" class="p-2 rounded-lg cursor-pointer bg-red-900 text-neutral-50 hover:bg-red-950" @click="deleteOrder" >
                     Delete Order
                 </button>
                 <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="closeOrderDetails" >
@@ -160,7 +160,6 @@
         if (!confirm("This action cannot be undone.")) {
             return
         }
-
 
         const response = await supabase.from('orders').delete().eq('id', selected_order_details.value.id)
         closeOrderDetails()

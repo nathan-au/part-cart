@@ -1,7 +1,8 @@
 <template>
 
     <!-- if user is authenticated display dashboard, else display welcome -->
-    <Technician v-if="session && session.user && session.user.user_metadata && session.user.user_metadata.user_type"/>
+    <Technician v-if="session && session.user && session.user.user_metadata && session.user.user_metadata.user_type && session.user.user_metadata.user_type == 'Technician'"/>
+    <Buyer v-else-if="session && session.user && session.user.user_metadata && session.user.user_metadata.user_type && session.user.user_metadata.user_type == 'Buyer'"/>
     <Welcome v-else/>
 
 

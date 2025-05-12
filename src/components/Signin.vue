@@ -26,7 +26,7 @@
     const password = ref('')
     
     const signIn = async () => { // define async function for handling signing in
-        if (!email.value.trim() || !password.value.trim()) { // check if email and password text fields have a value (minus the whitespace)
+        if (!email.value.trim() || !password.value.trim()) { // check if email and password text fields have a value (minus spaces)
             error_message.value = 'Please fill out all fields.'
             return
         }
