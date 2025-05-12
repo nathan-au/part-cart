@@ -1,7 +1,7 @@
 <template>
+    
     <div v-if="show_order_details" class="fixed bg-neutral-900/50 backdrop-blur-xs inset-0 flex flex-col justify-center items-center font-sans font-medium font-stretch-semi-condensed tracking-wider" @click="closeOrderDetails">
         <div class=" border-4 border-green-900 rounded-lg p-4 bg-neutral-50 w-1/2" @click.stop>
-            
             <div class="text-xl">
                 <span class="font-bold">Order ID: </span>
                 <span>{{ selected_order_details.id }}</span>
@@ -21,15 +21,20 @@
                     High Priority
                 </div>
 
-                <div v-if="selected_order_details.status == 'Submitted'" class="border-1 bg-blue-300 p-1 pl-2 pr-2 rounded-full inline">
-                    {{ selected_order_details.status }}
-                </div>
+                <div v-if="selected_order_details.status == 'Pending'" class="border-1 bg-yellow-400 p-1 pl-2 pr-2 rounded-full inline">
+                            {{ selected_order_details.status }}
+                        </div>
+                        <div v-else-if="selected_order_details.status == 'Approved'" class="border-1 bg-green-500 p-1 pl-2 pr-2 rounded-full inline">
+                            {{ selected_order_details.status }}
+                        </div>
+                        <div v-else-if="selected_order_details.status == 'Denied'" class="border-1 bg-red-500 p-1 pl-2 pr-2 rounded-full inline">
+                            {{ selected_order_details.status }}
+                        </div>
             </div>
             <div>
                 <span class="font-bold">URL: </span>
                 <a class="text-green-800 underline" :href="selected_order_details.url" target="_blank">{{ selected_order_details.url }}</a>
             </div>
-
             <div>
                 <span class="font-bold">Description: </span>
                 <span>{{ selected_order_details.description }}</span>
@@ -47,25 +52,14 @@
                 <span>{{ selected_order_details.created_by }}</span>
             </div>
             
-
-
-            
-
-            <div class="flex flex-row gap-4 mt-2 justify-between">
+            <div class="flex flex-row gap-4 mt-4 justify-between">
                 <button class="p-2 rounded-lg cursor-pointer bg-red-900 text-neutral-50 hover:bg-red-950" @click="deleteOrder" >
                     Delete Order
                 </button>
                 <button class="p-2 rounded-lg cursor-pointer bg-green-900 text-neutral-50 hover:bg-green-950" @click="closeOrderDetails" >
                     Close
                 </button>
-
-                
-
-
             </div>
-            
-
-            
         </div>
     </div>
 
@@ -88,9 +82,6 @@
                     Create Order
                 </button>
             </div>
-            
-            
-            
         </div>
         
         <!-- screen content -->

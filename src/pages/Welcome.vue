@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-4 items-center justify-center overflow-hidden h-screen text-neutral-900 bg-neutral-200 font-sans font-medium font-stretch-semi-condensed tracking-wider">
-        <div class="border-8 border-neutral-900 rounded-lg bg-white h-[80vh] w-[50vw] p-8">
+        <div class="border-8 border-neutral-900 rounded-lg bg-neutral-50 h-[80vh] w-[50vw] p-8">
             <div class="text-4xl font-bold text-center text-neutral-900">Welcome to</div>
             <div class="text-6xl font-bold text-center text-green-900">PartCart</div>
             <div class="text-2xl text-center text-neutral-900 mt-2">Simplifying repair part logistics for your team.</div>

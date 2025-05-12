@@ -66,7 +66,7 @@
                 url: url.value, 
                 priority: priority.value,
                 created_by: user.email,
-                status: 'Submitted'
+                status: 'Pending'
             })
             if (error) {
                 throw error
