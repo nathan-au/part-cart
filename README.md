@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-PartCart is a web application desgined for internal use at computer repair companies to manage the workflow of part requests from technicians to buyers. The goal is to eliminate friction and reduce delays so the overall repair operations can be as efficient as possible. 
+PartCart is a web application designed for internal use at computer repair companies to manage the workflow of part requests from technicians to buyers. The goal is to eliminate friction and reduce delays so the overall repair operations can be as efficient as possible. 
 
 ## Key Features
 
